@@ -1,4 +1,5 @@
-<%= form_for(@draft) do |f| %>
+
+<%= form_for @draft, html: { class: "new_draft form-inline" } do |f| %>
   <% if @draft.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@draft.errors.count, "error") %> prohibited this draft from being saved:</h2>
@@ -20,14 +21,37 @@
     <%= f.number_field :pick %>
   </div>
   <div class="field">
-    <%= f.label :draft_team %><br>
-    <%= f.text_field :draft_team %>
+    <%= f.label :team_id %><br>
+    <%= f.text_field :team_id%>
   </div>
   <div class="field">
-    <%= f.label :player_taken %><br>
-    <%= f.text_field :player_taken %>
+    <%= f.label :player_id %><br>
+    <%= f.text_field :player_id %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
+
+  Hey kid
 <% end %>
+
+
+
+<%= form_for(@draft, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <h2>Login:</h2>
+    <div class="input-group user-login">
+      <span class="input-group-addon">Username:</span>
+      <%= f.text_field :login, :class => 'form-control' %>
+    </div>
+    <div class="input-group user-login">
+      <span class="input-group-addon">Password:</span>
+      <%= f.password_field :password, :class => 'form-control'  %>
+    </div>
+      <% if devise_mapping.rememberable? -%>
+        <div class="checkbox row">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me, "Remember me" %>
+      <% end -%>
+         <%= f.submit "Sign In", :class => 'btn btn-primary btn-large pull-right' %>
+         </div>
+  <% end %>

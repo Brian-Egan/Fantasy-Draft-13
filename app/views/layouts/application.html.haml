@@ -1,0 +1,425 @@
+!!!
+%html
+  %head
+    %title Ffdraft13
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body.ffBody
+    = yield
+    -# =render 'layouts/home'
+
+	
+-# !!!
+-# %html{:lang => "en"}
+-# 	%head
+-# 	%meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+-# 	%meta{:charset => "utf-8"}
+-# 	/ Title and other stuffs
+-# 	%title Grid - Metro King
+-# 	%meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+-# 	%meta{:content => "", :name => "description"}
+-# 	%meta{:content => "", :name => "keywords"}
+-# 	%meta{:content => "", :name => "author"}
+-# 	/ Stylesheets
+-# 	%link{:href => "metro/style/bootstrap.css", :rel => "stylesheet"}
+-# 	/ Font awesome icon
+-# 	%link{:href => "metro/style/font-awesome.css", :rel => "stylesheet"}
+-# 	/ jQuery UI
+-# 	%link{:href => "metro/style/jquery-ui.css", :rel => "stylesheet"}
+-# 	/ Calendar
+-# 	%link{:href => "metro/style/fullcalendar.css", :rel => "stylesheet"}
+-# 	/ prettyPhoto
+-# 	%link{:href => "metro/style/prettyPhoto.css", :rel => "stylesheet"}
+-# 	/ Star rating
+-# 	%link{:href => "metro/style/rateit.css", :rel => "stylesheet"}
+-# 	/ Date picker
+-# 	%link{:href => "metro/style/bootstrap-datetimepicker.min.css", :rel => "stylesheet"}
+-# 	/ jQuery Gritter
+-# 	%link{:href => "metro/style/jquery.gritter.css", :rel => "stylesheet"}
+-# 	/ CLEditor
+-# 	%link{:href => "metro/style/jquery.cleditor.css", :rel => "stylesheet"}
+-# 	/ Bootstrap toggle
+-# 	%link{:href => "metro/style/bootstrap-toggle-buttons.css", :rel => "stylesheet"}
+-# 	/ Main stylesheet
+-# 	%link{:href => "metro/style/style.css", :rel => "stylesheet"}
+-# 	/ Widgets stylesheet
+-# 	%link{:href => "metro/style/widgets.css", :rel => "stylesheet"}
+-# 	/ Responsive style (from Bootstrap)
+-# 	%link{:href => "metro/style/bootstrap-responsive.css", :rel => "stylesheet"}
+-# 	/ HTML5 Support for IE
+-# 	/[if lt IE 9]
+-# 	<script src="metro/js/html5shim.js"></script>
+-# 	/ Favicon
+-# 	%link{:href => "metro/img/favicon/favicon.png", :rel => "shortcut icon"}
+-# 	%body
+-# 		.navbar.navbar-fixed-top.navbar-inverse
+-# 			.navbar-inner
+-# 				.container
+-# 					/ Menu button for smallar screens
+-# 					%a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+-# 						%span.icon-bar
+-# 						%span.icon-bar
+-# 						%span.icon-bar
+-# 					/ Site name for smallar screens
+-# 					%a.brand{:href => "index.html"}
+-# 						Metro
+-# 						%span.bold King
+-# 					/ Navigation starts
+-# 					.nav-collapse.collapse
+-# 						/ Links
+-# 						%ul.nav.pull-right
+-# 							%li.dropdown.pull-right
+-# 								%a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+-# 									%img.nav-user-pic{:alt => "", :src => "metro/img/user.jpg"}/
+-# 									Admin
+-# 									%b.caret
+-# 								/ Dropdown menu
+-# 								%ul.dropdown-menu
+-# 									%li
+-# 										%a{:href => "#"}
+-# 											%i.icon-user
+-# 											Profile
+-# 									%li
+-# 										%a{:href => "#"}
+-# 											%i.icon-cogs
+-# 											Settings
+-# 									%li
+-# 										%a{:href => "login.html"}
+-# 											%i.icon-off
+-# 											Logout
+-# 						/ Notifications
+-# 						%ul.nav.pull-right
+-# 							/ Comment button with number of latest comments count
+-# 							%li.dropdown.dropdown-big
+-# 								%a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+-# 									%i.icon-comments
+-# 									Chats
+-# 									%span.badge.badge-info 6
+-# 								%ul.dropdown-menu
+-# 									%li
+-# 										/ Heading - h5
+-# 										%h5
+-# 											%i.icon-comments
+-# 											Chats
+-# 										/ Use hr tag to add border
+-# 										%hr/
+-# 									%li
+-# 										/ List item heading h6
+-# 										%a{:href => "#"} Hi :)
+-# 										%span.label.label-warning.pull-right 10:42
+-# 										.clearfix
+-# 										%hr/
+-# 									%li
+-# 										%a{:href => "#"} How are you?
+-# 										%span.label.label-warning.pull-right 20:42
+-# 										.clearfix
+-# 										%hr/
+-# 									%li
+-# 										%a{:href => "#"} What are you doing?
+-# 										%span.label.label-warning.pull-right 14:42
+-# 										.clearfix
+-# 										%hr/
+-# 									%li
+-# 										.drop-foot
+-# 											%a{:href => "#"} View All
+-# 							/ Message button with number of latest messages count
+-# 							%li.dropdown.dropdown-big
+-# 								%a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+-# 									%i.icon-envelope-alt
+-# 									Inbox
+-# 									%span.badge.badge-important 6
+-# 								%ul.dropdown-menu
+-# 									%li
+-# 										/ Heading - h5
+-# 										%h5
+-# 											%i.icon-envelope-alt
+-# 											Messages
+-# 										/ Use hr tag to add border
+-# 										%hr/
+-# 									%li
+-# 										/ List item heading h6
+-# 										%a{:href => "#"} Hello how are you?
+-# 										/ List item para
+-# 										%p Quisque eu consectetur erat eget	semper...
+-# 										%hr/
+-# 									%li
+-# 										%a{:href => "#"} Today is wonderful?
+-# 										%p Quisque eu consectetur erat eget	semper...
+-# 										%hr/
+-# 									%li
+-# 										.drop-foot
+-# 											%a{:href => "#"} View All
+-# 							/ Members button with number of latest members count
+-# 							%li.dropdown.dropdown-big
+-# 								%a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+-# 									%i.icon-user
+-# 									Users
+-# 									%span.badge.badge-success 6
+-# 								%ul.dropdown-menu
+-# 									%li
+-# 										/ Heading - h5
+-# 										%h5
+-# 											%i.icon-user
+-# 											Users
+-# 										/ Use hr tag to add border
+-# 										%hr/
+-# 									%li
+-# 										/ List item heading h6
+-# 										%a{:href => "#"} Ravi Kumar
+-# 										%span.label.label-warning.pull-right Free
+-# 										.clearfix
+-# 										%hr/
+-# 									%li
+-# 										%a{:href => "#"} Balaji
+-# 										%span.label.label-important.pull-right Premium
+-# 										.clearfix
+-# 										%hr/
+-# 									%li
+-# 										%a{:href => "#"} Kumarasamy
+-# 										%span.label.label-warning.pull-right Free
+-# 										.clearfix
+-# 										%hr/
+-# 									%li
+-# 										.drop-foot
+-# 											%a{:href => "#"} View All
+-# 		/ Main content starts
+-# 		.content
+-# 			/ Sidebar
+-# 			.sidebar
+-# 				.sidebar-dropdown
+-# 					%a{:href => "#"} Navigation
+-# 				.sidebar-inner
+-# 					/ Search form
+-# 					.sidebar-widget
+-# 						%form.form-inline
+-# 							.input-append.row-fluid
+-# 								%input.span8{:placeholder => "Search", :type => "text"}
+-# 									%button.btn.btn-info{:type => "submit"} Search
+-# 					/ - Sidebar navigation
+-# 					/ If the main navigation has sub navigation, then add the class "has_submenu" to "li" of main navigation.
+-# 					%ul.navi
+-# 						/ Use the class nred, ngreen, nblue, nlightblue, nviolet or norange to add background color. You need to use this in <li> tag.
+-# 						%li.nred
+-# 							%a{:href => "metro/index.html"}
+-# 								%i.icon-desktop
+-# 								Dashboard
+-# 						/ Menu with sub menu
+-# 						%li.has_submenu.nlightblue
+-# 							%a{:href => "#"}
+-# 								/ Menu name with icon
+-# 								%i.icon-th
+-# 								Widgets
+-# 								/ Icon for dropdown
+-# 								%span.pull-right
+-# 									%i.icon-angle-right
+-# 							%ul
+-# 								%li
+-# 									%a{:href => "metro/widgets1.html"} Widgets #1
+-# 								%li
+-# 									%a{:href => "metro/widgets2.html"} Widgets #2
+-# 						%li.ngreen
+-# 							%a{:href => "metro/charts.html"}
+-# 								%i.icon-bar-chart
+-# 								Charts
+-# 						%li.norange
+-# 							%a{:href => "metro/ui.html"}
+-# 								%i.icon-sitemap
+-# 								UI Elements
+-# 						%li.has_submenu.nviolet
+-# 							%a{:href => "#"}
+-# 								%i.icon-file-alt
+-# 								Pages #1
+-# 								%span.pull-right
+-# 									%i.icon-angle-right
+-# 							%ul
+-# 								%li
+-# 									%a{:href => "metro/calendar.html"} Calendar
+-# 								%li
+-# 									%a{:href => "metro/post.html"} Make Post
+-# 								%li
+-# 									%a{:href => "metro/login.html"} Login
+-# 								%li
+-# 									%a{:href => "metro/register.html"} Register
+-# 								%li
+-# 									%a{:href => "metro/statement.html"} Statement
+-# 								%li
+-# 									%a{:href => "metro/error-log.html"} Error Log
+-# 								%li
+-# 									%a{:href => "metro/support.html"} Support
+-# 						%li.has_submenu.nblue.current.open
+-# 							%a{:href => "#"}
+-# 								%i.icon-file-alt
+-# 								Pages #2
+-# 								%span.pull-right
+-# 									%i.icon-angle-right
+-# 							%ul
+-# 								%li
+-# 									%a{:href => "metro/error.html"} Error
+-# 								%li
+-# 									%a{:href => "metro/gallery.html"} Gallery
+-# 								%li.active
+-# 									%a{:href => "metro/grid.html"} Grid
+-# 								%li
+-# 									%a{:href => "metro/invoice.html"} Invoice
+-# 								%li
+-# 									%a{:href => "metro/media.html"} Media
+-# 								%li
+-# 									%a{:href => "metro/profile.html"} Profile
+-# 						%li.nred
+-# 							%a{:href => "metro/forms.html"}
+-# 								%i.icon-list
+-# 								Forms
+-# 						%li.nlightblue
+-# 							%a{:href => "metro/tables.html"}
+-# 								%i.icon-table
+-# 								Tables
+-# 					/ Date
+-# 					.sidebar-widget
+-# 						#todaydate
+-# 			/ Sidebar ends
+-# 			/ Main bar
+-# 			.mainbar
+-# 				/ Page heading
+-# 				.page-head
+-# 					/ Page heading
+-# 					%h2.pull-left
+-# 						Grid
+-# 						/ page meta
+-# 						%span.page-meta Something Goes Here
+-# 					/ Breadcrumb
+-# 					.bread-crumb.pull-right
+-# 						%a{:href => "metro/index.html"}
+-# 							%i.icon-home
+-# 							Home
+-# 						/ Divider
+-# 						%span.divider /
+-# 						%a.bread-current{:href => "#"} Grid
+-# 					.clearfix
+-# 				/ Page heading ends
+-# 				/ Matter
+-# 				.matter
+-# 					.container-fluid
+-# 						.row-fluid.show-grid
+-# 							.span1 1
+-# 							.span1 1
+-# 							.span1 1
+-# 							.span1 1
+-# 							.span1 1
+-# 							.span1 1
+-# 							.span1 1
+-# 							.span1 1
+-# 							.span1 1
+-# 							.span1 1
+-# 							.span1 1
+-# 							.span1 1
+-# 						.row-fluid.show-grid
+-# 							.span4 4
+-# 							.span4 4
+-# 							.span4 4
+-# 						.row-fluid.show-grid
+-# 							.span4 4
+-# 							.span8 8
+-# 						.row-fluid.show-grid
+-# 							.span6 6
+-# 							.span6 6
+-# 						.row-fluid.show-grid
+-# 							.span12 12
+-# 				/ Matter ends
+-# 			/ Mainbar ends
+-# 			.clearfix
+-# 		/ Content ends
+-# 		/ Notification box starts
+-# 		.slide-box
+-# 			/ Notification box head
+-# 			.slide-box-head.bred
+-# 				/ Title
+-# 				.pull-left Notification Box
+-# 				/ Icon
+-# 				.slide-icons.pull-right
+-# 					%a.sminimize{:href => "#"}
+-# 						%i.icon-chevron-down
+-# 					%a.sclose{:href => "#"}
+-# 						%i.icon-remove
+-# 				.clearfix
+-# 			.slide-content
+-# 				/ It is default bootstrap nav tabs. See official bootstrap doc for doubts
+-# 				%ul.nav.nav-tabs
+-# 					/ Tab links
+-# 					%li.active
+-# 						%a{"data-toggle" => "tab", :href => "#tab1"}
+-# 							%i.icon-bar-chart
+-# 					%li
+-# 						%a{"data-toggle" => "tab", :href => "#tab2"}
+-# 							%i.icon-phone
+-# 					%li
+-# 						%a{"data-toggle" => "tab", :href => "#tab3"}
+-# 							%i.icon-comments
+-# 				/ Tab content
+-# 				.tab-content
+-# 					#tab1.tab-pane.active
+-# 						/ Graph #1
+-# 						.slide-data
+-# 							.slide-data-text Today Earnings
+-# 							.slide-data-result
+-# 								$5,0000
+-# 								%i.icon-arrow-up.red
+-# 							.clearfix
+-# 							%hr/
+-# 							%span#todayspark4.spark
+-# 						/ Graph #2
+-# 						.slide-data
+-# 							.slide-data-text Yesterday Earnings
+-# 							.slide-data-result
+-# 								$4,6000
+-# 								%i.icon-arrow-down.green
+-# 							.clearfix
+-# 							%hr/
+-# 							%span#todayspark5.spark
+-# 					#tab2.tab-pane
+-# 						%h5 Have some content here.
+-# 						%p Aliquam dui libero, pharetra nec venenatis in, scelerisque quis odio. In hac habitasse platea dictumst. Etiam porta placerat turpis, eget fermentum neque egestas at. Vestibulum ullamcorper, augue a sollicitudin vestibulum, orci purus semper felis, lobortis consequat nisi nunc eu enim.
+-# 					#tab3.tab-pane
+-# 						%h5 Have some content here.
+-# 						%p Aliquam dui libero, pharetra nec venenatis in, scelerisque quis odio. In hac habitasse platea dictumst. Etiam porta placerat turpis, eget fermentum neque egestas at. Vestibulum ullamcorper, augue a sollicitudin vestibulum, orci purus semper felis, lobortis consequat nisi nunc eu enim.
+-# 		/ Notification box ends
+-# 		/ Scroll to top
+-# 		%span.totop
+-# 			%a{:href => "#"}
+-# 				%i.icon-chevron-up
+-# 		/ JS
+-# 		%script{:src => "metro/js/jquery.js"}
+-# 		/ jQuery
+-# 		%script{:src => "metro/js/bootstrap.js"}
+-# 		/ Bootstrap
+-# 		%script{:src => "metro/js/jquery-ui-1.10.2.custom.min.js"}
+-# 		/ jQuery UI
+-# 		%script{:src => "metro/js/fullcalendar.min.js"}
+-# 		/ Full Google Calendar - Calendar
+-# 		%script{:src => "metro/js/jquery.rateit.min.js"}
+-# 		/ RateIt - Star rating
+-# 		%script{:src => "metro/js/jquery.prettyPhoto.js"}
+-# 		/ prettyPhoto
+-# 		/ jQuery Flot
+-# 		%script{:src => "metro/js/excanvas.min.js"}
+-# 		%script{:src => "metro/js/jquery.flot.js"}
+-# 		%script{:src => "metro/js/jquery.flot.resize.js"}
+-# 		%script{:src => "metro/js/jquery.flot.pie.js"}
+-# 		%script{:src => "metro/js/jquery.flot.stack.js"}
+-# 		%script{:src => "metro/js/jquery.gritter.min.js"}
+-# 		/ jQuery Gritter
+-# 		%script{:src => "metro/js/sparklines.js"}
+-# 		/ Sparklines
+-# 		%script{:src => "metro/js/jquery.cleditor.min.js"}
+-# 		/ CLEditor
+-# 		%script{:src => "metro/js/bootstrap-datetimepicker.min.js"}
+-# 		/ Date picker
+-# 		%script{:src => "metro/js/jquery.toggle.buttons.js"}
+-# 		/ Bootstrap Toggle
+-# 		%script{:src => "metro/js/filter.js"}
+-# 		/ Filter for support page
+-# 		%script{:src => "metro/js/custom.js"}
+-# 		/ Custom codes
+-# 		%script{:src => "metro/js/charts.js"}
+-# 		/ Custom chart codes
+

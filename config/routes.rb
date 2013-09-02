@@ -9,7 +9,18 @@ Ffdraft13::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
+ # root 'welcome#index'
+
  root 'drafts#index'
+
+
+
+ # resources :drafts do
+ #    get 'active', :on => :collection
+
+ #  end
+
+  match '/active' => "drafts#active", :via => :get
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

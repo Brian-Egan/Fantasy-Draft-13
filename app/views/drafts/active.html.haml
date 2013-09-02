@@ -1,0 +1,100 @@
+.jumbotron.headerJumbo
+	.row#draftHeader
+		= render :partial => 'shared/draftHeader'
+		-# .row{:class => "col-md-4"}
+		-# 	%h2{:class => "col-md-5 textRight"} Round
+		-# 	%h1{:class => "col-md-7 textLeft", :id => "roundNum"} #{@roundNum}
+		-# .row{:class => "col-md-4"}
+		-# 	%h2{:class => "col-md-5 textRight"} Pick
+		-# 	%h1{:class => "col-md-7 textLeft", :id => "pickNum"} #{@pickNum}
+		-# %h1{:class => "col-md-4 textRight", :id => "teamPicking", :'data-tID' => @teamName.id } #{@teamName.owner}
+	%div{:class => 'panel panel-success col-md-10 col-md-offset-1 selectionPanel'}
+		%form{:class => "form-inline"}
+			%input{:type => 'text', :class => 'col-md-7', :placeholder => 'Player', :id => "pName", :'data' => { :'name' => 'name'}}
+			%input{:type => 'text', :class => 'col-md-1 col-md-offset-1', :placeholder => 'Pos', :id => 'pPos', :'data' => { :'pos' => 'position'}}
+			%button{:type => 'submit', :class => 'btn btn-default btn-sm col-md-offset-1 col-md-2', :id => 'draftSubmit'} Submit
+
+#AvailPlayers{:class => 'panel panel-success'}
+	%div{:class => 'panel-heading availableHeader'}
+		%h3 Players Available
+		-# .btn-group.pull-right{:"data-no-turbolink" => ""}
+		-# 	%button#usrbkFilterbtn.btn.btn-default.btn-xs.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+		-# 		%span.caret
+		-# 	%ul.dropdown-menu.bkfilter-dropdown{:"data-no-turbolink" => ""}
+		-# 		%li#bkReceived.bkFilterBtn{"data-id" => "incoming"}
+		-# 			%a{:href => "#"} All Saved & Recommended
+		-# 		%li#bkReceived.bkFilterBtn{"data-id" => "received"}
+		-# 			%a{:href => "#"} Recommended to Me
+		-# 		%li#bkReceived.bkFilterBtn{"data-id" => "saved"}
+		-# 			%a{:href => "#"} Books I've Saved
+		-# 		%li#bkSent.bkFilterBtn{"data-id" => "sent"}
+		-# 			%a{:href => "#"} Recommendedations I've Sent
+	%div{:class => 'row', :id => 'playersAvail'}
+		= render :partial => 'shared/playersAvailable'
+		-# %div{:class => 'col-md-4'}
+		-# 	%table{:class => 'table table-striped table-condensed col-md-3'}
+		-# 		%tr
+		-# 			%th Rank
+		-# 			%th Name
+		-# 			%th Pos.
+		-# 		- @players1.each do |p|
+		-# 			%tr{:class => 'playerRow', :'data-name' => p.name}
+		-# 				%td #{p.rank1}
+		-# 				%td #{p.name}
+		-# 				%td #{p.position}
+		-# %div{:class => 'col-md-4'}
+		-# 	%table{:class => 'table table-striped table-condensed col-md-3'}
+		-# 		%tr
+		-# 			%th Rank
+		-# 			%th Name
+		-# 			%th Pos.
+		-# 		- @players2.each do |p|
+		-# 			%tr{:class => 'playerRow', :'data-name' => p.name}
+		-# 				%td 
+		-# 					= link_to p.rank1, "#{p.rank1}"
+		-# 				%td #{p.name}
+		-# 				%td #{p.position}
+		-# %div{:class => 'col-md-4'}
+		-# 	%table{:class => 'table table-striped table-condensed col-md-3'}
+		-# 		%tr
+		-# 			%th Rank
+		-# 			%th Name
+		-# 			%th Pos.
+		-# 		- @players3.each do |p|
+		-# 			%tr{:class => 'playerRow', :'data-name' => p.name}
+		-# 				%td #{p.rank1}
+		-# 				%td #{p.name}
+		-# 				%td #{p.position}
+	%div
+		= link_to '← Prev', active_path(:page => @prevLink)
+		= link_to 'Next →', active_path(:page => @nxtLink)
+
+#DraftSummary
+	= render :partial => 'shared/draftSummary'
+	-# %table{:class => 'table table-striped table-condensed'}
+	-# 	%tr
+	-# 		%th Rnd.
+	-# 		- @teamsList.each do |t|
+	-# 			%th #{t.owner}
+	-# 	- i = 1
+	-# 	- while i < @roundNum + 1
+	-# 		%tr
+	-# 			%td #{i}
+	-# 			- if i.even?
+	-# 				- if i == @roundNum
+	-# 					- @blankCol = 14 - @pickNum
+	-# 					- x = 1
+	-# 					- while x < @blankCol
+	-# 						%td bleh
+	-# 						- x += 1
+	-# 				- @playersRev = Draft.round(i).order("pick DESC")
+	-# 				- @playersRev.each do |d|
+	-# 					- p = Player.find(d.player_id)
+	-# 					%td
+	-# 						%h6 #{p.name}
+	-# 			- else
+	-# 				- Draft.round(i).each do |d|
+	-# 					- p = Player.find(d.player_id)
+	-# 					%td
+	-# 						%h6 #{p.name}
+	-# 		- i += 1

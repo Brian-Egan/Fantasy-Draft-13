@@ -1,0 +1,34 @@
+%div{:class => 'col-md-4'}
+	%table{:class => 'table table-striped table-condensed col-md-3'}
+		%tr
+			%th Rank
+			%th Name
+			%th Pos.
+		- @players1.each do |p|
+			%tr{:class => 'playerRow', :'data-name' => p.name}
+				%td #{p.rank1}
+				%td #{p.name}
+				%td #{p.position}
+%div{:class => 'col-md-4'}
+	%table{:class => 'table table-striped table-condensed col-md-3'}
+		%tr
+			%th Rank
+			%th Name
+			%th Pos.
+		- @players2.each do |p|
+			%tr{:class => 'playerRow', :'data-name' => p.name}
+				%td 
+					= link_to p.rank1, "#{p.rank1}"
+				%td #{p.name}
+				%td #{p.position}
+%div{:class => 'col-md-4'}
+	%table{:class => 'table table-striped table-condensed col-md-3'}
+		%tr
+			%th Rank
+			%th Name
+			%th Pos.
+		- @players3.each do |p|
+			%tr{:class => 'playerRow', :'data-name' => p.name}
+				%td #{p.rank1}
+				%td #{p.name}
+				%td #{p.position}

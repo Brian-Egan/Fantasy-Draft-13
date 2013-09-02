@@ -8,6 +8,9 @@ Bundler.require(:default, Rails.env)
 
 module Ffdraft13
   class Application < Rails::Application
+
+    config.assets.paths += ["#{Rails.root}/public/metro/style"]
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -19,5 +22,25 @@ module Ffdraft13
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+
+#Add misc CSS files
+    # config.assets.paths << Rails.root.join('public', 'assets', 'style')
+    # config.assets.precompile += %w( .css )
+
+    # #     config.assets.paths << Rails.root.join('public', 'assets', 'java')
+    # # config.assets.precompile += %w( .css )
+
+    # config.assets.paths << Rails.root.join('public', 'assets', 'img')
+    # config.assets.precompile += %w( .jpg .gif .png)
+
+    # config.assets.paths << Rails.root.join('public', 'assets', 'font')
+    # config.assets.precompile += %w( .svg .eot .woff .ttf )
+
+
+    # config.assets.paths << Rails.root.join('public', 'assets', 'img', 'favicon')
+    # config.assets.paths << Rails.root.join('public', 'assets', 'img', 'favicon')
+
+
   end
 end

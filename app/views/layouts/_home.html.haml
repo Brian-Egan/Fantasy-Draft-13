@@ -1,0 +1,70 @@
+.jumbotron.headerJumbo
+	.row
+		.row{:class => "col-md-4"}
+			%h2{:class => "col-md-5 textRight"} Round
+			%h1{:class => "col-md-7 textLeft", :id => "roundNum"} 4
+		.row{:class => "col-md-4"}
+			%h2{:class => "col-md-5 textRight"} Pick
+			%h1{:class => "col-md-7 textLeft", :id => "pickNum"} 3
+		%h1{:class => "col-md-4", :id => "teamPicking"} Team Name
+	%div{:class => 'panel panel-success col-md-10 col-md-offset-1 selectionPanel'}
+		%form{:class => "form-inline"}
+			%input{:type => 'text', :class => 'col-md-7', :placeholder => 'Player'}
+			%input{:type => 'text', :class => 'col-md-1 col-md-offset-1', :placeholder => 'Pos'}
+			%button{:type => 'submit', :class => 'btn btn-default btn-sm col-md-offset-1 col-md-2'} Submit
+
+#AvailPlayers{:class => 'panel panel-success'}
+	%div{:class => 'panel-heading availableHeader'}
+		%h3 Players Available
+		-# .btn-group.pull-right{:"data-no-turbolink" => ""}
+		-# 	%button#usrbkFilterbtn.btn.btn-default.btn-xs.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+		-# 		%span.caret
+		-# 	%ul.dropdown-menu.bkfilter-dropdown{:"data-no-turbolink" => ""}
+		-# 		%li#bkReceived.bkFilterBtn{"data-id" => "incoming"}
+		-# 			%a{:href => "#"} All Saved & Recommended
+		-# 		%li#bkReceived.bkFilterBtn{"data-id" => "received"}
+		-# 			%a{:href => "#"} Recommended to Me
+		-# 		%li#bkReceived.bkFilterBtn{"data-id" => "saved"}
+		-# 			%a{:href => "#"} Books I've Saved
+		-# 		%li#bkSent.bkFilterBtn{"data-id" => "sent"}
+		-# 			%a{:href => "#"} Recommendedations I've Sent
+	%div{:class => 'row'}
+		%div{:class => 'col-md-4'}
+			%table{:class => 'table table-striped table-condensed col-md-3'}
+				%tr
+					%th Rank
+					%th Name
+					%th Pos.
+				- Player.all.each do |p|
+					%tr
+						%td #{p.rank1}
+						%td #{p.name}
+						%td #{p.position}
+		%div{:class => 'col-md-4'}
+			%table{:class => 'table table-striped table-condensed col-md-3'}
+				%tr
+					%th Rank
+					%th Name
+					%th Pos.
+				- Player.all.each do |p|
+					%tr
+						%td #{p.rank1}
+						%td #{p.name}
+						%td #{p.position}
+		%div{:class => 'col-md-4'}
+			%table{:class => 'table table-striped table-condensed col-md-3'}
+				%tr
+					%th Rank
+					%th Name
+					%th Pos.
+				- Player.all.each do |p|
+					%tr
+						%td #{p.rank1}
+						%td #{p.name}
+						%td #{p.position}
+
+
+
+
+
+#DraftSummary

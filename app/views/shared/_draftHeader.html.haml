@@ -1,0 +1,7 @@
+.row{:class => "col-md-4"}
+	%h2{:class => "col-md-5 textRight"} Round
+	%h1{:class => "col-md-7 textLeft", :id => "roundNum"} #{@roundNum}
+.row{:class => "col-md-4"}
+	%h2{:class => "col-md-5 textRight"} Pick
+	%h1{:class => "col-md-7 textLeft", :id => "pickNum"} #{@pickNum}
+%h1{:class => "col-md-4 textRight", :id => "teamPicking", :'data-tID' => @teamName.id } #{@teamName.owner}

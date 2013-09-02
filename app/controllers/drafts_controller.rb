@@ -24,17 +24,46 @@ class DraftsController < ApplicationController
   # POST /drafts
   # POST /drafts.json
   def create
-    @draft = Draft.new(draft_params)
+    @overall = Draft.maximum("overall_pick")
+
+    @player = Player.where(name: params[:name]).take
+    @playerID = @player.id
+    @player.taken = true
+    
+
+    @player.save
+
+
+
+    # @teamID = Team.where(owner: params[:teamPick])
+    # @tID = @teamID.id
+    # @draft.team_id = @teamID
+
+
+
+
+
+    @draft = Draft.new(:round => params[:round], :pick => params[:pick], :overall_pick => @overall, :team_id => params[:teamID], :player_id => @playerID)
+
+    @draft.save
+
+    # redirect_to active_path
 
     respond_to do |format|
-      if @draft.save
-        format.html { redirect_to @draft, notice: 'Draft was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @draft }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @draft.errors, status: :unprocessable_entity }
-      end
+      format.js { redirect_to active_path}
     end
+
+
+    # respond_to do |format|
+    #   if @draft.save
+    #     redirect_to '/active'
+    #     # format.html { redirect_to @draft, notice: 'Draft was successfully created.' }
+    #     # format.json { render action: 'show', status: :created, location: @draft }
+    #   else
+    #     format.html { render action: 'new' }
+    #     format.json { render json: @draft.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /drafts/1
@@ -60,6 +89,77 @@ class DraftsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def active
+    # @draft = Draft.new
+
+    if Draft.maximum("round") > 1
+      @roundNum = Draft.maximum("round")
+    else
+      @roundNum = 1
+    end
+
+    @lastPick = Draft.find(Draft.maximum("id"))
+
+    if @lastPick.pick == 12
+        @roundNum = @roundNum += 1
+        @pickNum = 1
+    else
+        @pickNum = @lastPick.pick + 1
+    end
+
+    @lpickNum = @lastPick.pick
+    puts @roundNum
+    puts @lpickNum
+    puts @lastPick
+
+    if @lastPick.pick == 12
+      @teamID = @lastPick.team_id
+    elsif (@roundNum.odd? && @lastPick.pick != 12)
+      @teamID = (@lastPick.team_id + 1)
+    elsif (@roundNum.odd? && @lastPick.pick == 12)
+      @teamID = (@lastPick.team_id - 1)
+    elsif (@roundNum.even? && @lastPick.pick != 12)
+      @teamID = (@lastPick.team_id - 1)
+    else
+      @teamID = (@lastPick.team_id - 1)
+    end
+
+    @teamName = Team.find(@teamID)
+
+
+
+
+    if params[:page]
+      @col1page = params[:page].to_i
+    else
+      @col1page = 1
+    end
+
+    @players = Player.avail
+
+    @players1 = @players.paginate(:page => @col1page, :per_page => 5)
+    @players2 = @players.paginate(:page => (@col1page + 1), :per_page => 5)
+    @players3 = @players.paginate(:page => (@col1page + 2), :per_page => 5)
+
+    @teams = Team.all.order("draft_order DESC").all
+
+    @teamsList = Team.all.order("draft_order ASC").all
+
+    @nxtLink = (@col1page + 3)
+    if @col1page > 3
+      @prevLink = (@col1page - 3)
+    end
+
+    @currentRound = Draft.where(round: @roundNum).count
+
+
+    respond_to do |format|
+          format.html
+          format.js
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

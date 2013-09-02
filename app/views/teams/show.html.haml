@@ -1,0 +1,28 @@
+%p#notice
+	= notice
+
+.jumbotron.row
+	%div{:class => 'col-md-5 textRight'}
+		%h2 #{@team.owner}
+	%div{:class => 'col-md-5 textLeft'}
+		%h2 #{@team.name}
+
+
+
+%table{:class => 'table table-striped table-condensed col-md-8'}
+	%tr
+		%th{:class => 'col-md-1'} Rnd.
+		%th Player
+		%th Position
+	- @team.players.each do |p|
+		%tr
+			%td #{p.draft.round}
+			%td #{p.name}
+			%td #{p.position}
+
+
+= link_to 'Active Draft', '/active', {:class => 'btn btn-xlarge btn-info col-md-3 whiteText'}
+	
+%br
+= link_to 'Edit', edit_team_path(@team) 
+
