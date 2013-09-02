@@ -1,51 +1,59 @@
 %div{:class => 'col-md-4'}
 	%table{:class => 'table table-striped table-condensed col-md-3'}
 		%tr
-			%th Rank
+			%th ADP
+			%th ADR
 			%th Name
 			%th Pos.
 		- @players1.each do |p|
 			- if p.rank1 <= @roundNum
 				%tr{:class => 'playerRow', :'data-name' => p.name}
+					%td{:class => 'success'} #{p.rank2}
 					%td{:class => 'success'} #{p.rank1}
 					%td{:class => 'success'}  #{p.name}
 					%td{:class => 'success'}  #{p.position}
 			- else
 				%tr{:class => 'playerRow', :'data-name' => p.name}
+					%td #{p.rank2}
 					%td #{p.rank1}
 					%td #{p.name}
 					%td #{p.position}
 %div{:class => 'col-md-4'}
 	%table{:class => 'table table-striped table-condensed col-md-3'}
 		%tr
-			%th Rank
+			%th ADP
+			%th ADR
 			%th Name
 			%th Pos.
 		- @players2.each do |p|
 			- if p.rank1 <= @roundNum
 				%tr{:class => 'playerRow', :'data-name' => p.name}
+					%td{:class => 'success'} #{p.rank2}
 					%td{:class => 'success'} #{p.rank1}
 					%td{:class => 'success'}  #{p.name}
 					%td{:class => 'success'}  #{p.position}
 			- else
 				%tr{:class => 'playerRow', :'data-name' => p.name}
+					%td #{p.rank2}
 					%td #{p.rank1}
 					%td #{p.name}
 					%td #{p.position}
 %div{:class => 'col-md-4'}
 	%table{:class => 'table table-striped table-condensed col-md-3'}
 		%tr
-			%th Rank
-			%th Name
+			%th ADP
+			%th ADR
 			%th Pos.
 		- @players3.each do |p|
 			- if p.rank1 <= @roundNum
 				%tr{:class => 'playerRow', :'data-name' => p.name}
+					%td{:class => 'success'} #{p.rank2}
 					%td{:class => 'success'} #{p.rank1}
 					%td{:class => 'success'}  #{p.name}
 					%td{:class => 'success'}  #{p.position}
 			- else
 				%tr{:class => 'playerRow', :'data-name' => p.name}
+					%td #{p.rank2}
 					%td #{p.rank1}
 					%td #{p.name}
 					%td #{p.position}
