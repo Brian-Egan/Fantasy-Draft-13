@@ -28,3 +28,8 @@ $(document).delegate ".playerRow", "click", ->
 	$(this).fadeOut('fast');
 	subMit = {utf: "✓", name: playerName, round: roundNumber, pick: pickNumber, teamID: teamNum}
 	$.post('/drafts', subMit, null, "script")
+
+$(document).delegate ".posBtn", "click", ->
+	playerPos = $(this).data('pos');
+	subMit = {utf: "✓", position: playerPos}
+	$.get('/sortPOS', subMit, null, 'script')

@@ -77,3 +77,7 @@
 .whiteText {
 	color: white !important;
 }
+
+.btn-toolbar {
+	margin-top: 10px;
+}

@@ -21,6 +21,9 @@ Ffdraft13::Application.routes.draw do
  #  end
 
   match '/active' => "drafts#active", :via => :get
+  match '/sortPOS' => 'drafts#sortPosition', :via => :get
+
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

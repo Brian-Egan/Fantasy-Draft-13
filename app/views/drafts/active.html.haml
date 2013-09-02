@@ -15,8 +15,18 @@
 			%button{:type => 'submit', :class => 'btn btn-default btn-sm col-md-offset-1 col-md-2', :id => 'draftSubmit'} Submit
 
 #AvailPlayers{:class => 'panel panel-success'}
-	%div{:class => 'panel-heading availableHeader'}
-		%h3 Players Available
+	%div{:class => 'panel-heading availableHeader row'}
+		%h3{:class => 'col-md-6'} Players Available
+		%div{:class => 'btn-toolbar pull-right'}
+			%div{:class => 'btn-group'}
+				%button{:class => 'btn btn-sm btn-default posBtn', :'data-pos' => 'QB', :id => 'QB'} QB
+				%button{:class => 'btn  btn-sm btn-default posBtn', :'data-pos' => 'RB', :id => 'RB'} RB
+				%button{:class => 'btn btn-sm  btn-default posBtn', :'data-pos' => 'WR', :id => 'WR'} WR
+				%button{:class => 'btn btn-sm  btn-default posBtn', :'data-pos' => 'TE', :id => 'TE'} TE
+				%button{:class => 'btn btn-sm  btn-default posBtn', :'data-pos' => 'K', :id => 'K'} K
+				%button{:class => 'btn btn-sm  btn-default posBtn', :'data-pos' => 'Def', :id => 'Def'} Def
+				%button{:class => 'btn btn-sm  btn-default posBtn', :'data-pos' => 'AllOff', :id => 'AllOff'} All Off.
+				
 		-# .btn-group.pull-right{:"data-no-turbolink" => ""}
 		-# 	%button#usrbkFilterbtn.btn.btn-default.btn-xs.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
 		-# 		%span.caret

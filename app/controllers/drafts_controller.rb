@@ -29,7 +29,7 @@ class DraftsController < ApplicationController
     @player = Player.where(name: params[:name]).take
     @playerID = @player.id
     @player.taken = true
-    
+
 
     @player.save
 
@@ -93,42 +93,51 @@ class DraftsController < ApplicationController
   def active
     # @draft = Draft.new
 
-    if Draft.maximum("round") > 1
-      @roundNum = Draft.maximum("round")
-    else
+    if Draft.count > 0
+      if Draft.maximum("round") > 1
+        @roundNum = Draft.maximum("round")
+      else
+        @roundNum = 1
+      end
+
+      @lastPick = Draft.find(Draft.maximum("id"))
+
+      if @lastPick.pick == 12
+          @roundNum = @roundNum += 1
+          @pickNum = 1
+      else
+          @pickNum = @lastPick.pick + 1
+      end
+
+      @lpickNum = @lastPick.pick
+      puts @roundNum
+      puts @lpickNum
+      puts @lastPick
+
+      if @lastPick.pick == 12
+        @teamID = @lastPick.team_id
+      elsif (@roundNum.odd? && @lastPick.pick != 12)
+        @teamID = (@lastPick.team_id + 1)
+      elsif (@roundNum.odd? && @lastPick.pick == 12)
+        @teamID = (@lastPick.team_id - 1)
+      elsif (@roundNum.even? && @lastPick.pick != 12)
+        @teamID = (@lastPick.team_id - 1)
+      else
+        @teamID = (@lastPick.team_id - 1)
+      end
+
+      @teamName = Team.find(@teamID)
+
+      @currentRound = Draft.where(round: @roundNum).count
+
+  else
+
       @roundNum = 1
-    end
-
-    @lastPick = Draft.find(Draft.maximum("id"))
-
-    if @lastPick.pick == 12
-        @roundNum = @roundNum += 1
-        @pickNum = 1
-    else
-        @pickNum = @lastPick.pick + 1
-    end
-
-    @lpickNum = @lastPick.pick
-    puts @roundNum
-    puts @lpickNum
-    puts @lastPick
-
-    if @lastPick.pick == 12
-      @teamID = @lastPick.team_id
-    elsif (@roundNum.odd? && @lastPick.pick != 12)
-      @teamID = (@lastPick.team_id + 1)
-    elsif (@roundNum.odd? && @lastPick.pick == 12)
-      @teamID = (@lastPick.team_id - 1)
-    elsif (@roundNum.even? && @lastPick.pick != 12)
-      @teamID = (@lastPick.team_id - 1)
-    else
-      @teamID = (@lastPick.team_id - 1)
-    end
-
-    @teamName = Team.find(@teamID)
-
-
-
+      @pickNum = 1
+      @teamID = 1
+      @teamName = Team.find(@teamID)
+      @currentRound = 1
+  end
 
     if params[:page]
       @col1page = params[:page].to_i
@@ -151,8 +160,6 @@ class DraftsController < ApplicationController
       @prevLink = (@col1page - 3)
     end
 
-    @currentRound = Draft.where(round: @roundNum).count
-
 
     respond_to do |format|
           format.html
@@ -160,6 +167,20 @@ class DraftsController < ApplicationController
     end
   end
 
+
+    def sortPosition
+      @players = Player.avail.where(:position => params[:position])
+      @col1page = 1
+
+       @players1 = @players.paginate(:page => @col1page, :per_page => 5)
+       @players2 = @players.paginate(:page => (@col1page + 1), :per_page => 5)
+      @players3 = @players.paginate(:page => (@col1page + 2), :per_page => 5)
+
+    respond_to do |format|
+          format.js
+    end
+
+    end
 
   private
     # Use callbacks to share common setup or constraints between actions.
