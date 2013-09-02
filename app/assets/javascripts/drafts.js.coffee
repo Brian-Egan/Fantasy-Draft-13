@@ -31,5 +31,8 @@ $(document).delegate ".playerRow", "click", ->
 
 $(document).delegate ".posBtn", "click", ->
 	playerPos = $(this).data('pos');
-	subMit = {utf: "✓", position: playerPos}
+	roundNumber = $('#roundNum').text();
+	$('.posBtn').removeClass('active')
+	$(this).addClass('active')
+	subMit = {utf: "✓", position: playerPos, round: roundNumber}
 	$.get('/sortPOS', subMit, null, 'script')

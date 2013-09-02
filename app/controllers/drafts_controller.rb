@@ -151,9 +151,9 @@ class DraftsController < ApplicationController
 
     @players = Player.avail
 
-    @players1 = @players.paginate(:page => @col1page, :per_page => 5)
-    @players2 = @players.paginate(:page => (@col1page + 1), :per_page => 5)
-    @players3 = @players.paginate(:page => (@col1page + 2), :per_page => 5)
+    @players1 = @players.paginate(:page => @col1page, :per_page => 7)
+    @players2 = @players.paginate(:page => (@col1page + 1), :per_page => 7)
+    @players3 = @players.paginate(:page => (@col1page + 2), :per_page => 7)
 
     @teams = Team.all.order("draft_order DESC").all
 
@@ -175,14 +175,18 @@ class DraftsController < ApplicationController
     def sortPosition
       if params[:position] == "AllOff"
         @players = Player.avail.where(:position => ['QB','RB','WR','TE'])
+      elsif params[:position] == "All"
+        @players = Player.avail
       else
         @players = Player.avail.where(:position => params[:position])
       end
       @col1page = 1
 
-       @players1 = @players.paginate(:page => @col1page, :per_page => 5)
-       @players2 = @players.paginate(:page => (@col1page + 1), :per_page => 5)
-      @players3 = @players.paginate(:page => (@col1page + 2), :per_page => 5)
+      @roundNum = params[:round].to_i
+
+       @players1 = @players.paginate(:page => @col1page, :per_page => 7)
+       @players2 = @players.paginate(:page => (@col1page + 1), :per_page => 7)
+      @players3 = @players.paginate(:page => (@col1page + 2), :per_page => 7)
 
     respond_to do |format|
           format.js

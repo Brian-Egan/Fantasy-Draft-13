@@ -81,3 +81,7 @@
 .btn-toolbar {
 	margin-top: 10px;
 }
+
+td.success {
+	background-color: rgba(223,240,216,.6) !important;
+}
