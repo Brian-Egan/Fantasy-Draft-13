@@ -26,12 +26,16 @@ class DraftsController < ApplicationController
   def create
     @overall = Draft.maximum("overall_pick")
 
-    @player = Player.where(name: params[:name]).take
-    @playerID = @player.id
-    @player.taken = true
-
-
-    @player.save
+    if Player.where(name: params[:name]).exists?
+      @player = Player.where(name: params[:name]).take
+      @playerID = @player.id
+      @player.taken = true
+      @player.save
+    else
+      @player = Player.create(:name => params[:name], :position => params[:position], :taken => true )
+      @player.save
+      @playerID = @player.id
+    end
 
 
 
@@ -169,7 +173,11 @@ class DraftsController < ApplicationController
 
 
     def sortPosition
-      @players = Player.avail.where(:position => params[:position])
+      if params[:position] == "AllOff"
+        @players = Player.avail.where(:position => ['QB','RB','WR','TE'])
+      else
+        @players = Player.avail.where(:position => params[:position])
+      end
       @col1page = 1
 
        @players1 = @players.paginate(:page => @col1page, :per_page => 5)
