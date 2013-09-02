@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  position: MyString
+  rank1: 1
+  rank2: 1
+  rank3: 1
+  pos_rank: 1
+  available: false
+  taken_at: 1
+
+two:
+  name: MyString
+  position: MyString
+  rank1: 1
+  rank2: 1
+  rank3: 1
+  pos_rank: 1
+  available: false
+  taken_at: 1
