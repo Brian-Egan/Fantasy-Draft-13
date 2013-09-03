@@ -11,7 +11,8 @@
 #AvailPlayers{:class => 'panel panel-success'}
 	%div{:class => 'panel-heading availableHeader row'}
 		%h3{:class => 'col-md-3'} Players Available
-		%a{:'data-toggle' => 'modal', :href => '#myTeam', :class => 'btn btn-warning btn-sm col-md-1 mTeamBtn'} My Team
+		%a{:'data-toggle' => 'modal', :href => '#myTeam', :class => 'btn btn-default btn-sm col-md-1 mTeamBtn'} My Team
+		%a{:'data-toggle' => 'modal', :href => '#jbTeam', :class => 'btn btn-default btn-sm col-md-1 mTeamBtn'} John's Team
 		%div{:class => 'btn-toolbar pull-right'}
 			%div{:class => 'btn-group'}
 				%button{:class => 'btn btn-sm btn-default posBtn', :'data-pos' => 'QB', :id => 'QB'} QB
@@ -44,6 +45,9 @@
 
 #myTeam.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
 	= render :partial => 'shared/myTeamModal', :locals => {:teamName => "Mit Wobet"}
+
+#jbTeam.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+	= render :partial => 'shared/jbTeamModal', :locals => {:teamName => "Bissert"}
 
 #TeamsPoints.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
 	= render :partial => 'shared/teamsByPoints'

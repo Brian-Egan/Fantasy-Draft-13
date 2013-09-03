@@ -1,0 +1,36 @@
+.modal-dialog
+	.modal-content
+		.modal-header
+			%button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} &times;
+			%h4.modal-title #{teamName}
+		.modal-body
+			%table{:class => 'table table-striped table-condensed'}
+				- @y = 1
+				%tr
+					%th{:class => 'col-md-1'} Position
+					%th{:class => 'col-md-1'} Slots
+					%th{:class => 'col-md-1'} Drafted
+					%th{:class => 'col-md-5'} Players
+					%th{:class => 'col-md-1'} Proj. Points
+					%th{:class => 'col-md-1'} Proj. Weekly
+				= render :partial => "shared/teamPosRow", :locals => {:p => @jbQBs, :name => "QB", :pa => @posAvail, :y => @y }
+				- @y += 1
+				= render :partial => "shared/teamPosRow", :locals => {:p => @jbRBs, :name => "RB", :pa => @posAvail, :y => @y }
+				- @y += 1
+				= render :partial => "shared/teamPosRow", :locals => {:p => @jbWRs, :name => "WR", :pa => @posAvail, :y => @y }
+				- @y += 1
+				= render :partial => "shared/teamPosRow", :locals => {:p => @jbTEs, :name => "TE", :pa => @posAvail, :y => @y }
+				- @y += 1
+				= render :partial => "shared/teamPosRow", :locals => {:p => @jbPKs, :name => "PK", :pa => @posAvail, :y => @y }
+				- @y += 1
+				= render :partial => "shared/teamPosRow", :locals => {:p => @jbDefs, :name => "Def", :pa => @posAvail, :y => @y }
+				- @y += 1
+				%tr
+					%th{:class => 'col-md-1'} Total
+					%th #{@posAvail["Total"]}
+					%th #{@jbPlayers.count}
+					%th 
+					%th
+						= SumPosPoints(@jbPlayers, "rank3")
+					%th
+						= CalcWeeklyPoints(@posPoints, 12)

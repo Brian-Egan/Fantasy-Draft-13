@@ -177,6 +177,24 @@ class DraftsController < ApplicationController
       @myDefs = []
     end
 
+    if Team.find(9)
+      @jbPlayers = Team.find(9).players
+      @jbQBs = @jbPlayers.where(:position => "QB")
+      @jbRBs = @jbPlayers.where(:position => "RB")
+      @jbWRs = @jbPlayers.where(:position => "WR")
+      @jbTEs = @jbPlayers.where(:position => "TE")
+      @jbPKs = @jbPlayers.where(:position => "PK")
+      @jbDefs = @jbPlayers.where(:position => "DT")
+    else
+      @jbPlayers = []
+      @jbQBs = []
+      @jbRBs = []
+      @jbWRs = []
+      @jbTEs = []
+      @jbPKs = []
+      @jbDefs = []
+    end
+
     @posAvail = {
       "QB"=>2,
       "RB"=>2,
