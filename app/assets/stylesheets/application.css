@@ -118,3 +118,47 @@ td.info {
 th {
 	font-size: 10px;
 }
+
+.headerPanel {
+	margin-left: -30px !important;
+}
+
+.tr-danger {
+	background: rgba(237, 175, 195, .3) !important;
+}
+
+.tr-success {
+	background: rgba(187, 223, 188, .3) !important;
+}
+
+.tr-warning {
+	background: rgba(246, 200, 180, .3) !important;
+}
+
+.tr-info {
+	background: rgba(182, 207, 236, .3) !important;
+}
+
+.tro-danger {
+	background: rgba(177, 115, 114,.2) !important;
+}
+
+.tro-success {
+	background: rgba(102, 186, 103,.2) !important;
+}
+
+.tro-warning {
+	background: rgba(242, 131, 85, .2) !important;
+}
+
+.tro-info {
+	background: rgba(90, 150, 217, .2) !important;
+}
+
+.centerText {
+	text-align: center;
+}
+
+.mTeamBtn {
+		margin-top: 10px;
+}

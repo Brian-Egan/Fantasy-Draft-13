@@ -1,0 +1,41 @@
+%tr
+	%td
+		%h6 #{name}
+	%td
+		%h6
+			= @posAvail[name]
+	- if y.even?
+		- if p.count < @posAvail[name]
+			%td{:class=> "tr-info"} 
+				%h6 #{p.count}
+		- elsif p.count == @posAvail[name]
+			%td{:class=> "tr-success"} 
+				%h6   #{p.count}
+		- elsif p.count > @posAvail[name]
+			%td{:class=> "tr-danger"} 
+				%h6   #{p.count}
+		-else
+			%td 
+				%h6  #{p.count}
+	- else
+		- if p.count < @posAvail[name]
+			%td{:class=> "tro-info"} 
+				%h6  #{p.count}
+		- elsif p.count == @posAvail[name]
+			%td{:class=> "tro-success"} 
+				%h6   #{p.count}
+		- elsif p.count > @posAvail[name]
+			%td{:class=> "tro-danger"} 
+				%h6   #{p.count}
+		-else
+			%td 
+				%h6  #{p.count}
+	%td 
+		%h6  
+			= TeamPlayerList(p)
+	%td
+		%h6
+			= SumPosPoints(p, "rank3")
+	%td
+		%h6
+			= CalcWeeklyPoints(@posPoints, 12)

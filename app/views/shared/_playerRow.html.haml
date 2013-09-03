@@ -1,6 +1,7 @@
 %tr{:class => 'playerRow', :'data-name' => p.name}
-	%td #{p.rank2}
 	%td #{p.rank1}
+	%td 
+		= (p.rank2 / 12).ceil
 	%td #{p.name}
 	%td #{p.position}
 	%td{:class => 'info-btn'}

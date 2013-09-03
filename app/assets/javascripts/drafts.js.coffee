@@ -36,3 +36,12 @@ $(document).delegate ".posBtn", "click", ->
 	$(this).addClass('active')
 	subMit = {utf: "✓", position: playerPos, round: roundNumber}
 	$.get('/sortPOS', subMit, null, 'script')
+
+$(document).delegate ".ownerName", "click", ->
+	teamNum = $(this).data('tid');
+	mBody = $('#aModalBody')
+	$('#aTeamName').empty()
+	mBody.empty()
+	console.log "About to get server response"
+	subMit = {utf: "✓", teamID: teamNum}
+	$.get('/team/modal', subMit, null, 'script')

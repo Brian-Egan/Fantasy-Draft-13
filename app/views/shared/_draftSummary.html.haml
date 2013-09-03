@@ -2,8 +2,23 @@
 	%tr
 		%th Rnd.
 		- @teamsList.each do |t|
-			%th 
+			%th{:class => 'centerText'}
 				=link_to t.owner, team_path(t.id)
+	%tr
+		%th 
+			%small Proj.
+		- @teamsList.each do |t|
+			%th{:class => 'centerText'}
+				%small
+					= t.players.sum :rank3
+	%tr
+		%th 
+			%small Weekly
+		- @teamsList.each do |t|
+			%th{:class => 'centerText'}
+				%small
+					- @posPoints = t.players.sum :rank3
+					= CalcWeeklyPoints(@posPoints, 12)
 	- i = 1
 	- while i < @roundNum + 1
 		%tr
@@ -19,11 +34,11 @@
 				- @playersRev = Draft.round(i).order("pick DESC")
 				- @playersRev.each do |d|
 					- p = Player.find(d.player_id)
-					%td
+					%td{:class => 'centerText'}
 						%h6 #{p.name}
 			- else
 				- Draft.round(i).each do |d|
 					- p = Player.find(d.player_id)
-					%td
+					%td{:class => 'centerText'}
 						%h6 #{p.name}
 		- i += 1

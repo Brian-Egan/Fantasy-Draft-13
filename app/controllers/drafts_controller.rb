@@ -159,6 +159,37 @@ class DraftsController < ApplicationController
 
     @teamsList = Team.all.order("draft_order ASC").all
 
+    if Team.find(12)
+      @myPlayers = Team.find(12).players
+      @myQBs = @myPlayers.where(:position => "QB")
+      @myRBs = @myPlayers.where(:position => "RB")
+      @myWRs = @myPlayers.where(:position => "WR")
+      @myTEs = @myPlayers.where(:position => "TE")
+      @myPKs = @myPlayers.where(:position => "PK")
+      @myDefs = @myPlayers.where(:position => "DT")
+    else
+      @myPlayers = []
+      @myQBs = []
+      @myRBs = []
+      @myWRs = []
+      @myTEs = []
+      @myPKs = []
+      @myDefs = []
+    end
+
+    @posAvail = {
+      "QB"=>2,
+      "RB"=>2,
+      "WR"=>2,
+      "TE"=>1,
+      "PK"=>1,
+      "Def"=>1,
+      "Flex"=>1,
+      "Bench"=>7,
+      "Total"=>15,
+    }
+
+
     @nxtLink = (@col1page + 3)
     if @col1page > 3
       @prevLink = (@col1page - 3)
@@ -192,7 +223,49 @@ class DraftsController < ApplicationController
           format.js
     end
 
+
+    def aTeamModal
+
+      @posAvail = {
+        "QB"=>2,
+        "RB"=>2,
+        "WR"=>2,
+        "TE"=>1,
+        "PK"=>1,
+        "Def"=>1,
+        "Flex"=>1,
+        "Bench"=>7,
+        "Total"=>15,
+      }
+
+
+      if Team.find(params[:teamID])
+        @team = Team.find(params[:teamID])
+        @tPlayers = @team.players
+        @tQBs = @myPlayers.where(:position => "QB")
+        @tRBs = @myPlayers.where(:position => "RB")
+        @tWRs = @myPlayers.where(:position => "WR")
+        @tTEs = @myPlayers.where(:position => "TE")
+        @tPKs = @myPlayers.where(:position => "PK")
+        @tDefs = @myPlayers.where(:position => "DT")
+        @name = @team.owner
+      else
+        @tPlayers = []
+        @tQBs = []
+        @tRBs = []
+        @tWRs = []
+        @tTEs = []
+        @tPKs = []
+        @tDefs = []
+      end
+
+      respond_to do |format|
+        format.js
+      end
+
     end
+
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

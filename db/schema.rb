@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130903034300) do
+ActiveRecord::Schema.define(version: 20130903182243) do
 
   create_table "drafts", force: true do |t|
     t.integer  "round"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 20130903034300) do
     t.integer  "team_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "pos_rank"
+    t.decimal  "wkly_points"
   end
 
   create_table "teams", force: true do |t|

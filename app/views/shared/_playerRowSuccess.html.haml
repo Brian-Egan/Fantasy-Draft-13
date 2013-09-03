@@ -1,6 +1,7 @@
 %tr{:class => 'playerRow', :'data-name' => p.name}
-	%td{:class => 'success tBox'} #{p.rank2}
-	%td{:class => 'success tBox  '} #{p.rank1}
+	%td{:class => 'success tBox'} #{p.rank1}
+	%td{:class => 'success tBox  '} 
+		= (p.rank2 / 12).ceil
 	%td{:class => 'success '} #{p.name}
 	%td{:class => 'success tBox '}  #{p.position}
 	%td{:class => 'success info-btn'}

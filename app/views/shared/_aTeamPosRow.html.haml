@@ -1,0 +1,16 @@
+%tr
+	%td
+		%h6 #{name}
+	%td
+		%h6{:class => "slotsAvail", :'data-name' => #{name} }
+	%td{:class => 'pCount'} 
+		%h6 #{p.count}
+	%td 
+		%h6  
+			= TeamPlayerList(p)
+	%td
+		%h6
+			= SumPosPoints(p, "rank3")
+	%td
+		%h6
+			= CalcWeeklyPoints(@posPoints, 12)
