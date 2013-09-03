@@ -19,7 +19,7 @@ $(document).delegate "#draftSubmit", "click", ->
 
 
 
-$(document).delegate ".playerRow", "click", ->
+$(document).delegate ".playerRow:not(:last-child)", "click", ->
 	playerName = $(this).data('name');
 	$('#draftHeader').fadeOut('fast')
 	roundNumber = $('#roundNum').text();

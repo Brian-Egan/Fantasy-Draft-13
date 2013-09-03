@@ -85,3 +85,23 @@
 td.success {
 	background-color: rgba(223,240,216,.4) !important;
 }
+
+.info-btn {
+	text-align: center;
+	width: 20px;
+	color: white !important;
+	border-radius 2px;
+
+}
+
+.info-btn a {
+	color: white !important;
+	border-radius: 5px !important;
+	height: 18px;
+	/*background-color: rgba(102,153,204,.7) !important;*/
+	opacity: .4;
+}
+
+.tBox {
+	width: 50px;
+}
