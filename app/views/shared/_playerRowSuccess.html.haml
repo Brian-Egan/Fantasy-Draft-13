@@ -1,0 +1,22 @@
+%tr{:class => 'playerRow', :'data-name' => p.name}
+	%td{:class => 'success tBox'} #{p.rank2}
+	%td{:class => 'success tBox  '} #{p.rank1}
+	%td{:class => 'success '} #{p.name}
+	%td{:class => 'success tBox '}  #{p.position}
+	%td{:class => 'success info-btn'}
+		=link_to "i", "http://fantasy.nfl.com/league/637424/players/search?playerStatus=&position=&searchQuery=" + p.name + "&statCategory=projectedStats&statType=#playersSearch=playersSearch%2C%2Fleague%2F637424%2Fplayers%2Fsearch%253FplayerStatus%253D%2526position%253D%2526searchQuery%253D" + p.name + "%2526sort%253DprojectedPts%2526statCategory%253DprojectedStats%2526statSeason%253D2013%2526statType%253DseasonProjectedStats%2Creplace", :target => "_blank", :class => 'btn btn-xs btn-info'
+
+
+-# %tr{:class => 'playerRow', :'data-name' => p.name}
+-# 	%td{:class => 'success tBox'}
+-# 		%h6 #{p.rank2}
+-# 	%td{:class => 'success tBox  '} 
+-# 		%h6 #{p.rank1}
+-# 	%td{:class => 'success tBox  '} 
+-# 		%h6 #{p.rank3}
+-# 	%td{:class => 'success nBox'} 
+-# 		%h6 #{p.name}
+-# 	%td{:class => 'success tBox '} 
+-# 		%h6 #{p.position}
+-# 	%td{:class => 'success info-btn'}
+-# 		=link_to "i", "http://fantasy.nfl.com/league/637424/players/search?playerStatus=&position=&searchQuery=" + p.name + "&statCategory=projectedStats&statType=#playersSearch=playersSearch%2C%2Fleague%2F637424%2Fplayers%2Fsearch%253FplayerStatus%253D%2526position%253D%2526searchQuery%253D" + p.name + "%2526sort%253DprojectedPts%2526statCategory%253DprojectedStats%2526statSeason%253D2013%2526statType%253DseasonProjectedStats%2Creplace", :target => "_blank", :class => 'btn btn-xs btn-info'

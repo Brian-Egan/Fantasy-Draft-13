@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130902202610) do
+ActiveRecord::Schema.define(version: 20130903034300) do
 
   create_table "drafts", force: true do |t|
     t.integer  "round"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20130902202610) do
     t.integer  "rank1"
     t.integer  "rank2"
     t.integer  "rank3"
-    t.integer  "pos_rank"
+    t.string   "value"
     t.boolean  "taken"
     t.integer  "draft_id"
     t.integer  "team_id"
