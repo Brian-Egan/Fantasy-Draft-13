@@ -104,15 +104,34 @@ td.info {
 	height: 18px;
 	/*background-color: rgba(102,153,204,.7) !important;*/
 	opacity: .4;
+	
 }
 
-.tBox {
-	width: 30px !important;
-	max-width: 30px !important;
+.info-btn {
+	padding-left: 0px !important;
+}
+
+.vBtn {
+	opacity: .5;
+	border-radius: 15px !important;
+	margin-right: 5px !important;
+	font-size: 10px !important;
+	margin-left: 0px !important;
+}
+
+.tBox1 {
+/*	width: 30px !important;*/
+	max-width: 40px !important;
+	width: 38px !important;
 }
 
 .nBox {
 	max-width: 120px !important;
+	width: 130px !important;
+}
+
+.tBox2 {
+	width: 60px !important;
 }
 
 th {
@@ -161,4 +180,40 @@ th {
 
 .mTeamBtn {
 		margin-top: 10px;
+}
+
+.prBox {
+	width: 85px !important;
+}
+
+table {
+	table-layout: fixed;
+}
+
+.pPointsBtn {
+	margin-top: 10px;
+}
+
+#prevNext {
+	width: 100%;
+}
+
+
+#prevNext a.navBtn {
+	border-top: 1px solid red;
+	/*margin-left: 25px;*/
+	color: black !important;
+}
+
+#prevNext a:hover {
+	background: grey;
+}
+
+.alignRight {
+	text-align: right;
+}
+
+.teamsPointsBtn {
+	color: white !important;
+	float: right !important;
 }

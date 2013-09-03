@@ -23,13 +23,21 @@
 				%button{:class => 'btn btn-sm  btn-default posBtn', :'data-pos' => 'AllOff', :id => 'AllOff'} All Off.
 			%div{:class => 'btn-group'}
 				%button{:class => 'btn btn-sm  btn-info posBtn', :'data-pos' => 'All', :id => 'All'} Show All
+				%div{:class => 'btn-toolbar'}
+		-# %button{:class => 'btn  btn-sm btn-default pPointsBtn  col-md-offset-1', :'data-pos' => 'points', :id => 'sortPoints'} Sort by Points
+		%div{:class => 'btn-group pPointsBtn col-md-offset-1'}
+			%button{:class => 'btn btn-sm btn-default pointsBtn active', :'data-pos' => 'season', :id => 'season'} Season
+			%button{:class => 'btn  btn-sm btn-default pointsBtn', :'data-pos' => 'weekly', :id => 'weekly'} Weekly
+
 
 	%div{:class => 'row', :id => 'playersAvail'}
 		= render :partial => 'shared/playersAvailable'
 
-	%div
-		= link_to '← Prev', active_path(:page => @prevLink)
-		= link_to 'Next →', active_path(:page => @nxtLink)
+	%div#prevNext
+		= link_to '← Prev....', active_path(:page => @prevLink), :class => 'navBtn'
+		= link_to '....Next →', active_path(:page => @nxtLink), :class => 'alignRight navBtn'
+		= link_to "Show Teams by Points", '#TeamsPoints', :'data-toggle' => 'modal', :class => 'btn btn-xs  btn-info teamsPointsBtn pull-right'
+	
 
 #DraftSummary
 	= render :partial => 'shared/draftSummary'
@@ -37,7 +45,8 @@
 #myTeam.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
 	= render :partial => 'shared/myTeamModal', :locals => {:teamName => "Mit Wobet"}
 
-#anyTeam.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+#TeamsPoints.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+	= render :partial => 'shared/teamsByPoints'
 	-# = render :partial => 'shared/anyTeamModal', :locals => {:teamName => @roundNum}
 
 

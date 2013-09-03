@@ -1,8 +1,21 @@
 %tr{:class => 'playerRow', :'data-name' => p.name}
 	%td #{p.rank1}
 	%td 
-		= (p.rank2 / 12).ceil
+		= (p.rank2/16).ceil
 	%td #{p.name}
-	%td #{p.position}
+	%td  #{p.position} - #{p.pos_rank}
+	%td{:class => 'prBox centerText seasonPoints'} #{p.rank3}
+	%td{:class => 'wklyPoints centerText'} #{p.wkly_points.ceil}
+
 	%td{:class => 'info-btn'}
-		=link_to "i", "http://fantasy.nfl.com/league/637424/players/search?playerStatus=&position=&searchQuery=" + p.name + "&statCategory=projectedStats&statType=#playersSearch=playersSearch%2C%2Fleague%2F637424%2Fplayers%2Fsearch%253FplayerStatus%253D%2526position%253D%2526searchQuery%253D" + p.name + "%2526sort%253DprojectedPts%2526statCategory%253DprojectedStats%2526statSeason%253D2013%2526statType%253DseasonProjectedStats%2Creplace", :target => "_blank", :class => 'btn btn-xs btn-info'
+		- if p.value == "Under"
+			%button{:class => "btn btn-xs btn-info vBtn"} Value
+		- elsif p.value == "Right"
+			%button{:class => "btn btn-xs btn-success vBtn"} Right
+		- elsif p.value == "Over"
+			%button{:class => "btn btn-xs btn-warning vBtn"} Over
+		- elsif p.value == "Over x2"
+			%button{:class => "btn btn-xs btn-danger vBtn"} Over+
+		- elsif p.value == "Extreme Over"
+			%button{:class => "btn btn-xs btn-danger vBtn"} Extreme
+		

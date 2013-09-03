@@ -45,3 +45,29 @@ $(document).delegate ".ownerName", "click", ->
 	console.log "About to get server response"
 	subMit = {utf: "✓", teamID: teamNum}
 	$.get('/team/modal', subMit, null, 'script')
+
+$(document).ready ->
+	$('.wklyPoints').hide()
+
+$(document).delegate ".pointsBtn", "click", ->
+	$('.pointsBtn').removeClass('active')
+	$(this).addClass('active')
+	typeShow = $(this).data('pos')
+	if typeShow == "weekly"
+	 	$('.wklyPoints').show()
+	 	$('.seasonPoints').hide()
+	if typeShow == "season"
+	 	$('.wklyPoints').hide()
+	 	$('.seasonPoints').show()
+	# alert typeShow
+	console.log typeShow
+
+$(document).delegate "#sortPoints", "click", ->
+	if $(this).hasClass("active")
+		$(this).removeClass('active')
+		subMit = {utf: "✓", order: "overall"}
+	else
+		$(this).addClass('active')
+		subMit = {utf: "✓", order: "points"}
+	console.log "Points!"
+	$.get('/playerssort', subMit, null, 'script')

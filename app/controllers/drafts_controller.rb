@@ -190,6 +190,7 @@ class DraftsController < ApplicationController
     }
 
 
+
     @nxtLink = (@col1page + 3)
     if @col1page > 3
       @prevLink = (@col1page - 3)
@@ -222,6 +223,31 @@ class DraftsController < ApplicationController
     respond_to do |format|
           format.js
     end
+
+    def sortByPoints
+        
+       @col1page = 1
+
+      if params[:order] == "points"
+        @players = Player.avail.order('rank3 DESC')
+        @players1 = @players.paginate(:page => @col1page, :per_page => 7)
+        @players2 = @players.paginate(:page => (@col1page + 1), :per_page => 7)
+        @players3 = @players.paginate(:page => (@col1page + 2), :per_page => 7)
+      else 
+        @players = Player.avail.order('rank1 ASC')
+        @players1 = @players.paginate(:page => @col1page, :per_page => 7)
+        @players2 = @players.paginate(:page => (@col1page + 1), :per_page => 7)
+        @players3 = @players.paginate(:page => (@col1page + 2), :per_page => 7)
+      end
+
+        # @players1 = @players.paginate(:page => @col1page, :per_page => 7)
+        # @players2 = @players.paginate(:page => (@col1page + 1), :per_page => 7)
+        # @players3 = @players.paginate(:page => (@col1page + 2), :per_page => 7)
+
+    respond_to do |format|
+              format.js
+        end
+      end
 
 
     def aTeamModal

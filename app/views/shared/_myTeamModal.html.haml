@@ -8,11 +8,11 @@
 				- @y = 1
 				%tr
 					%th{:class => 'col-md-1'} Position
-					%th Slots
-					%th Drafted
-					%th Players
-					%th Proj. Points
-					%th Proj. Weekly
+					%th{:class => 'col-md-1'} Slots
+					%th{:class => 'col-md-1'} Drafted
+					%th{:class => 'col-md-5'} Players
+					%th{:class => 'col-md-1'} Proj. Points
+					%th{:class => 'col-md-1'} Proj. Weekly
 				= render :partial => "shared/teamPosRow", :locals => {:p => @myQBs, :name => "QB", :pa => @posAvail, :y => @y }
 				- @y += 1
 				= render :partial => "shared/teamPosRow", :locals => {:p => @myRBs, :name => "RB", :pa => @posAvail, :y => @y }

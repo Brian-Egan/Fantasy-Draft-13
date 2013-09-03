@@ -8,4 +8,9 @@ class Team < ActiveRecord::Base
 			return d.player_id
 		end
 	end
+
+	def totalPoints
+		return self.players.sum :rank3
+	end
+
 end

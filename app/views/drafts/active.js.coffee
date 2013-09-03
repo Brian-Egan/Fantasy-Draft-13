@@ -1,5 +1,6 @@
 console.log("hey man")
 $('#draftHeader').html("<%= j render :partial => 'shared/draftHeader' %>")
 $('#playersAvail').html("<%= j render :partial => 'shared/playersAvailable' %>")
+$('.wklyPoints').hide()
 $('#DraftSummary').html("<%= j render :partial => 'shared/draftSummary' %>")
 $('#draftHeader').fadeIn('fast')

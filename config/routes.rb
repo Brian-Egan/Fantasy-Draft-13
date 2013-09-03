@@ -23,6 +23,7 @@ Ffdraft13::Application.routes.draw do
   match '/active' => "drafts#active", :via => :get
   match '/sortPOS' => 'drafts#sortPosition', :via => :get
   match '/team/modal' => 'drafts#aTeamModal', :via => :get
+  match '/playerssort' => 'drafts#sortByPoints', :via => :get
 
 
 
