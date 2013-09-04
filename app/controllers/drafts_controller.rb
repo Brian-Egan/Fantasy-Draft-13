@@ -130,7 +130,15 @@ class DraftsController < ApplicationController
         @teamID = (@lastPick.team_id - 1)
       end
 
-      @teamName = Team.find(@teamID)
+      if @teamID > 12
+          @teamID = @teamID - 1
+        end
+      if Team.find(@teamID)
+        @teamName = Team.find(@teamID)
+      else
+        @teamID = @teamID - 1
+        @teamName = Team.find(@teamID)
+      end
 
       @currentRound = Draft.where(round: @roundNum).count
 
@@ -196,7 +204,7 @@ class DraftsController < ApplicationController
     end
 
     @posAvail = {
-      "QB"=>2,
+      "QB"=>1,
       "RB"=>2,
       "WR"=>2,
       "TE"=>1,
@@ -214,10 +222,14 @@ class DraftsController < ApplicationController
       @prevLink = (@col1page - 3)
     end
 
+    @drafts = Draft.all
 
     respond_to do |format|
           format.html
           format.js
+          # format.csv { render text: @drafts.to_csv  }
+          format.csv { send_data text: @drafts.to_csv  }
+          format.xls # { send_data @drafts.to_csv(col_sep: "\t")  }
     end
   end
 

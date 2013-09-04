@@ -7,15 +7,18 @@
 			%table{:class => 'table table-striped table-condensed'}
 				- @y = 1
 				%tr
+					%th{:class => 'col-md-1 centerText'} Pick
 					%th{:class => 'col-md-5 centerText'} Team
 					%th{:class => 'col-md-2 centerText'} Players
 					%th{:class => 'col-md-3 centerText'} Proj. Points
 					%th{:class => 'col-md-3 centerText'} Proj. Weekly
 				- @teamsList.each do |t|
 					%tr
+						%td #{@y}
 						%td{:class => 'centerText'} #{t.owner}
 						%td{:class => 'centerText'} #{t.players.count}
 						%td{:class => 'centerText'} 
 							= SumPosPoints(t.players, "rank3")
 						%td{:class => 'centerText'}
 							=CalcWeeklyPoints(@posPoints, 16)
+					- @y += 1

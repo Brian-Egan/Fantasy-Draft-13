@@ -1,0 +1,60 @@
+<table border="1">
+  <tr>
+    <th>Round</th>
+    <th>Pick</th>
+    <th>Overall</th>
+    <th>Team</th>
+    <th>Player</th>
+    <th>Position</th>
+  </tr>
+  <% @i = 2 %>
+  <% @drafts.each do |d| %>
+  <tr>	
+    <td><%= d.round %></td>
+    <td><%= d.pick %></td>
+    <td> =((A<%= @i %>-1)*12)+B<%= @i %></td>
+    <td><%= Team.find(d.team_id).owner %></td>
+    <td><%= Player.find(d.player_id).name %></td>
+    <td><%= Player.find(d.player_id).position %></td>   
+  </tr>
+  <% @i += 1 %>
+  <% end %>
+</table>
+
+
+
+<!-- THE BELOW SUPPOSEDLY WILL OUTPUT AN EXCEL NATIVE DOC, BUT I FOUND PUTS ALL TEXT ON ONE LINE IN ONE CELL...
+SEE INFO HERE: http://railscasts.com/episodes/362-exporting-csv-and-excel?view=asciicast
+AND HERE: http://msdn.microsoft.com/en-us/library/aa140066(v=office.10).aspx
+
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Round</Data></Cell>
+        <Cell><Data ss:Type="String">Pick</Data></Cell>
+        <Cell><Data ss:Type="String">Overall</Data></Cell>
+        <Cell><Data ss:Type="String">Team</Data></Cell>
+        <Cell><Data ss:Type="String">Player</Data></Cell>
+        <Cell><Data ss:Type="String">Position</Data></Cell>
+      </Row>
+     <#% @i = 2 %>
+    <#% @drafts.each do |d| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><#%= d.round %></Data></Cell>
+        <Cell><Data ss:Type="Number"><#%= d.pick   %></Data></Cell>
+        <Cell><Data ss:Type="Number">=((A<#%= @i %>-1)*12)+B<#%= @i %></Data></Cell>
+        <Cell><Data ss:Type="String"><#%=  Team.find(d.team_id).owner  %></Data></Cell>
+        <Cell><Data ss:Type="String"><#%= Player.find(d.player_id).name  %></Data></Cell>
+        <Cell><Data ss:Type="String"><#%= Player.find(d.player_id).position %></Data></Cell>
+      </Row>
+      <#% @i += 1 %>
+    <#% end %>
+    </Table>
+  </Worksheet>
+</Workbook> -->

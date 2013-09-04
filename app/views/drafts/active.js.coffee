@@ -1,4 +1,4 @@
-console.log("hey man")
+console.log("hey man active")
 $('#draftHeader').html("<%= j render :partial => 'shared/draftHeader' %>")
 $('#playersAvail').html("<%= j render :partial => 'shared/playersAvailable' %>")
 $('.wklyPoints').hide()
