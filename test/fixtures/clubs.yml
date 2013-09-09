@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  city_abr: MyString
+  city: MyString
+  name: MyString
+  wins: 1
+  losses: 1
+  ties: 1
+  win_percentage: 9.99
+
+two:
+  city_abr: MyString
+  city: MyString
+  name: MyString
+  wins: 1
+  losses: 1
+  ties: 1
+  win_percentage: 9.99

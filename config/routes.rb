@@ -1,4 +1,8 @@
 Ffdraft13::Application.routes.draw do
+  resources :schedules
+
+  resources :clubs
+
   resources :players
 
   resources :drafts

@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130903184152) do
+ActiveRecord::Schema.define(version: 20130909174828) do
+
+  create_table "clubs", force: true do |t|
+    t.string   "city_abr"
+    t.string   "city"
+    t.string   "name"
+    t.integer  "wins"
+    t.integer  "losses"
+    t.integer  "ties"
+    t.decimal  "win_percentage"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "drafts", force: true do |t|
     t.integer  "round"
@@ -37,6 +49,18 @@ ActiveRecord::Schema.define(version: 20130903184152) do
     t.datetime "updated_at"
     t.integer  "pos_rank"
     t.decimal  "wkly_points"
+  end
+
+  create_table "schedules", force: true do |t|
+    t.integer  "week"
+    t.datetime "date"
+    t.integer  "visitor_id"
+    t.integer  "home_id"
+    t.integer  "visitor_score"
+    t.integer  "home_score"
+    t.integer  "winning_team_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "teams", force: true do |t|

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>City abr:</strong>
+  <%= @club.city_abr %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @club.city %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @club.name %>
+</p>
+
+<p>
+  <strong>Wins:</strong>
+  <%= @club.wins %>
+</p>
+
+<p>
+  <strong>Losses:</strong>
+  <%= @club.losses %>
+</p>
+
+<p>
+  <strong>Ties:</strong>
+  <%= @club.ties %>
+</p>
+
+<p>
+  <strong>Win percentage:</strong>
+  <%= @club.win_percentage %>
+</p>
+
+<%= link_to 'Edit', edit_club_path(@club) %> |
+<%= link_to 'Back', clubs_path %>
